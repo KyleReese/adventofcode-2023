@@ -32,7 +32,7 @@ function getCalibraionNumFromLine(line: string) {
 }
 
 async function processLineByLine() {
-  const fileStream = fs.createReadStream("./Day-1/trebuchet-input.txt");
+  const fileStream = fs.createReadStream("./Day-1/input.txt");
 
   const rl = readline.createInterface({
     input: fileStream,
