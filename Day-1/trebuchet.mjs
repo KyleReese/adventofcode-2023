@@ -2,10 +2,32 @@ import fs from "node:fs";
 
 import readline from "node:readline";
 
+const wordToDigitMap = {
+  one: "1",
+  two: "2",
+  three: "3",
+  four: "4",
+  five: "5",
+  six: "6",
+  seven: "7",
+  eight: "8",
+  nine: "9",
+};
+
 function getCalibraionNumFromLine(line) {
-  const digits = [...line.matchAll(/\d/g)];
-  const firstDigit = digits[0][0];
-  const lastDigit = digits[digits.length - 1][0];
+  const digits = [
+    ...line.matchAll(/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g),
+  ].map((match) => match[1]);
+  let firstDigit = digits[0];
+  //Check if this is a word
+  if (firstDigit.length > 1) {
+    firstDigit = wordToDigitMap[firstDigit];
+  }
+  let lastDigit = digits[digits.length - 1];
+  //Check if this is a word
+  if (lastDigit.length > 1) {
+    lastDigit = wordToDigitMap[lastDigit];
+  }
   return Number(firstDigit + lastDigit);
 }
 
