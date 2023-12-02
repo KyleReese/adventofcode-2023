@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.2"
+  }
+}
